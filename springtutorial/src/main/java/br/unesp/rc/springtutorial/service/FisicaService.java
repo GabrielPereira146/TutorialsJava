@@ -11,7 +11,8 @@ import br.unesp.rc.springtutorial.repository.FisicaRepository;
 
 @Component
 public class FisicaService {
-     @Autowired
+    
+    @Autowired
     private FisicaRepository repository;
 
     public FisicaService() {
@@ -21,6 +22,8 @@ public class FisicaService {
         Fisica persistedEntity = null;
 
         if (repository != null) {
+            System.out.println("BATATA");
+
             persistedEntity = repository.save(entity);
         }
 

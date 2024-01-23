@@ -25,7 +25,13 @@ public class FisicaServiceTest {
     @Test
     @DisplayName("FisicaService.save(Fisica)")
     void testSave() {
-        entity = InstanceGenerator.getPessoaFisica("222.333.444-55", "user1");
+        String cpf = "222.333.444-55";
+
+        entity = fs.findByCpf(cpf);
+        if (entity != null){
+            fs.delete(entity); 
+        }      
+        entity = InstanceGenerator.getPessoaFisica(cpf, "user1");
         System.out.println(entity);
 
         Fisica f = fs.save(entity);
@@ -34,6 +40,26 @@ public class FisicaServiceTest {
         System.out.println("----------------------------------------");
 
         assertEquals(entity, f);
+    }
+
+    @Test
+    void testCreateInstance(){
+
+        String cpf = "111.222.353-44";
+
+        entity = fs.findByCpf(cpf);
+        if (entity != null){
+            fs.delete(entity); 
+        }
+         
+        entity = InstanceGenerator.getPessoaFisica(cpf, "user5");
+        //  System.out.println(entity);
+
+        Fisica f = fs.save(entity);
+        System.out.println("----------------------------------------");
+        System.out.println(f);
+        System.out.println("----------------------------------------");
+
     }
 
     @Disabled

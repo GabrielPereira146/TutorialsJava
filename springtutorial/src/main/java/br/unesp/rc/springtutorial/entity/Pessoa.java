@@ -36,6 +36,8 @@ public class Pessoa {
     @JoinColumn(name = "pessoa_idpessoa")
     private List<Endereco> endereco;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "acesso_idAcesso")
     private Acesso acesso;
 
     @OneToOne(cascade = CascadeType.ALL)
